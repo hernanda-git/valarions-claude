@@ -1,4 +1,4 @@
-# OpenClaude Quick Start for macOS and Linux
+# Valarions Claude Quick Start for macOS and Linux
 
 This guide uses a standard shell such as Terminal, iTerm, bash, or zsh.
 
@@ -15,15 +15,15 @@ node --version
 npm --version
 ```
 
-## 2. Install OpenClaude
+## 2. Install Valarions Claude
 
 ```bash
-npm install -g @gitlawb/openclaude@latest
+npm install -g @gitlawb/oc@latest
 ```
-On Arch Linux, you can alternatively install OpenClaude via the community-maintained [AUR package](https://aur.archlinux.org/packages/openclaude):
+On Arch Linux, you can alternatively install Valarions Claude via the community-maintained [AUR package](https://aur.archlinux.org/packages/oc):
 
 ```bash
-paru -S openclaude
+paru -S oc
 ```
 ## 3. Pick One Provider
 
@@ -36,7 +36,7 @@ export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_API_KEY=sk-your-key-here
 export OPENAI_MODEL=gpt-4o
 
-openclaude
+oc
 ```
 
 ### Option B: DeepSeek
@@ -47,7 +47,7 @@ export OPENAI_API_KEY=sk-your-key-here
 export OPENAI_BASE_URL=https://api.deepseek.com/v1
 export OPENAI_MODEL=deepseek-v4-flash
 
-openclaude
+oc
 ```
 
 Use `deepseek-v4-pro` when you want the stronger model. `deepseek-chat` and `deepseek-reasoner` still work as DeepSeek's legacy API aliases.
@@ -67,7 +67,7 @@ export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
 export OPENAI_MODEL=llama3.1:8b
 
-openclaude
+oc
 ```
 
 No API key is needed for Ollama local models.
@@ -92,19 +92,19 @@ export OPENAI_BASE_URL=http://localhost:1234/v1
 export OPENAI_MODEL=your-model-name
 # export OPENAI_API_KEY=lmstudio  # optional: some users need a dummy key
 
-openclaude
+oc
 ```
 
 Replace `your-model-name` with the model name shown in LM Studio.
 
 No API key is needed for LM Studio local models (but uncomment the `OPENAI_API_KEY` line if you hit auth errors).
 
-## 4. If `openclaude` Is Not Found
+## 4. If `oc` Is Not Found
 
 Close the terminal, open a new one, and try again:
 
 ```bash
-openclaude
+oc
 ```
 
 ## 5. If Your Provider Fails
@@ -130,11 +130,11 @@ Check the basics:
 - make sure a model is loaded in LM Studio
 - make sure the model name matches what you set in `OPENAI_MODEL`
 
-## 6. Updating OpenClaude
+## 6. Updating Valarions Claude
 
 **Via npm:**
 ```bash
-npm install -g @gitlawb/openclaude@latest
+npm install -g @gitlawb/oc@latest
 ```
 
 **Via AUR:**
@@ -143,16 +143,16 @@ paru
 ```
 *(Or use your preferred AUR helper like `yay -Syu`)*
 
-## 7. Uninstalling OpenClaude
+## 7. Uninstalling Valarions Claude
 
 **Via npm:**
 ```bash
-npm uninstall -g @gitlawb/openclaude
+npm uninstall -g @gitlawb/oc
 ```
 
 **Via AUR (Arch Linux):**
 ```bash
-paru -Rns openclaude
+paru -Rns oc
 ```
 
 ## Need Advanced Setup?

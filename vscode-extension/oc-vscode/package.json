@@ -1,0 +1,179 @@
+{
+  "name": "oc-vscode",
+  "displayName": "Valarions Claude",
+  "description": "Practical VS Code companion for Valarions Claude with project-aware launch behavior and a real Control Center.",
+  "version": "0.2.0",
+  "publisher": "devnull-bootloader",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:oc.start",
+    "onCommand:oc.startInWorkspaceRoot",
+    "onCommand:oc.openDocs",
+    "onCommand:oc.openSetupDocs",
+    "onCommand:oc.openWorkspaceProfile",
+    "onCommand:oc.openControlCenter",
+    "onCommand:oc.newChat",
+    "onCommand:oc.openChat",
+    "onCommand:oc.resumeSession",
+    "onCommand:oc.abortChat",
+    "onView:oc.controlCenter",
+    "onView:oc.chat"
+  ],
+  "main": "./src/extension.js",
+  "files": [
+    "README.md",
+    "media/**",
+    "src/extension.js",
+    "src/presentation.js",
+    "src/state.js",
+    "src/chat/**",
+    "themes/**"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "oc.start",
+        "title": "Valarions Claude: Launch in Terminal",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.startInWorkspaceRoot",
+        "title": "Valarions Claude: Launch in Workspace Root",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.openDocs",
+        "title": "Valarions Claude: Open Repository",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.openSetupDocs",
+        "title": "Valarions Claude: Open Setup Guide",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.openWorkspaceProfile",
+        "title": "Valarions Claude: Open Workspace Profile",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.openControlCenter",
+        "title": "Valarions Claude: Open Control Center",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.newChat",
+        "title": "Valarions Claude: New Chat",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.openChat",
+        "title": "Valarions Claude: Open Chat Panel",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.resumeSession",
+        "title": "Valarions Claude: Resume Session",
+        "category": "Valarions Claude"
+      },
+      {
+        "command": "oc.abortChat",
+        "title": "Valarions Claude: Abort Generation",
+        "category": "Valarions Claude"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "oc",
+          "title": "Valarions Claude",
+          "icon": "media/oc.svg"
+        }
+      ]
+    },
+    "views": {
+      "oc": [
+        {
+          "id": "oc.chat",
+          "name": "Chat",
+          "type": "webview"
+        },
+        {
+          "id": "oc.controlCenter",
+          "name": "Control Center",
+          "type": "webview"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "oc.openChat",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l"
+      }
+    ],
+    "configuration": {
+      "title": "Valarions Claude",
+      "properties": {
+        "oc.launchCommand": {
+          "type": "string",
+          "default": "oc",
+          "description": "Command run in the integrated terminal when launching Valarions Claude."
+        },
+        "oc.terminalName": {
+          "type": "string",
+          "default": "Valarions Claude",
+          "description": "Integrated terminal tab name for Valarions Claude sessions."
+        },
+        "oc.useOpenAIShim": {
+          "type": "boolean",
+          "default": false,
+          "description": "Optionally set CLAUDE_CODE_USE_OPENAI=1 in launched Valarions Claude terminals."
+        },
+        "oc.permissionMode": {
+          "type": "string",
+          "default": "acceptEdits",
+          "enum": ["default", "acceptEdits", "bypassPermissions", "plan"],
+          "enumDescriptions": [
+            "Prompt for permission on each tool use (requires manual approval)",
+            "Auto-approve file edits, prompt for other operations (recommended)",
+            "Auto-approve all operations without prompting",
+            "Read-only mode — no file modifications allowed"
+          ],
+          "description": "Permission mode for chat sessions. Controls which tool operations are auto-approved."
+        }
+      }
+    },
+    "themes": [
+      {
+        "label": "Valarions Claude Terminal Black",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Valarions Claude-Terminal-Black.json"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "bun test src",
+    "lint": "node scripts/lint.js",
+    "package": "npx @vscode/vsce package --no-dependencies"
+  },
+  "keywords": [
+    "oc",
+    "terminal",
+    "theme",
+    "cli",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gitlawb/oc"
+  },
+  "license": "MIT"
+}

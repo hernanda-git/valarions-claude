@@ -114,7 +114,7 @@ export function migrateLegacyClaudeConfigHome(options?: {
   }
 
   const homeDir = options?.homeDir ?? homedir()
-  const openClaudeDir = join(homeDir, '.openclaude')
+  const openClaudeDir = join(homeDir, '.oc')
   const legacyClaudeDir = join(homeDir, '.claude')
 
   try {
@@ -130,7 +130,7 @@ export function migrateLegacyClaudeConfigHome(options?: {
     }
 
     for (const legacyFile of legacyGlobalConfigFiles) {
-      const openClaudeFile = legacyFile.replace(/^\.claude/, '.openclaude')
+      const openClaudeFile = legacyFile.replace(/^\.claude/, '.oc')
       copyMissingPathSync(
         join(homeDir, legacyFile),
         join(homeDir, openClaudeFile),
@@ -151,7 +151,7 @@ export function resolveClaudeConfigHomeDir(options?: {
   }
 
   const homeDir = options?.homeDir ?? homedir()
-  const openClaudeDir = join(homeDir, '.openclaude')
+  const openClaudeDir = join(homeDir, '.oc')
 
   return openClaudeDir.normalize('NFC')
 }
@@ -178,7 +178,7 @@ export const getClaudeConfigHomeDir = memoize(
       configDirEnv,
       homeDir,
     })
-    const openClaudeDir = join(homeDir, '.openclaude')
+    const openClaudeDir = join(homeDir, '.oc')
     const legacyClaudeDir = join(homeDir, '.claude')
 
     if (

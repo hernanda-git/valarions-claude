@@ -2,13 +2,13 @@
 
 **Valarions Claude** — CLI coding-agent sumber terbuka untuk penyedia model cloud dan lokal.
 
-Fork dari [OpenClaude](https://github.com/Gitlawb/openclaude) oleh **GitLawb**, dikustomisasi dan dikelola oleh [Hernanda](https://github.com/hernanda-git).
+Fork dari [Valarions Claude](https://github.com/Gitlawb/oc) oleh **GitLawb**, dikustomisasi dan dikelola oleh [Hernanda](https://github.com/hernanda-git).
 
 Gunakan API kompatibel-OpenAI, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, dan backend lain yang didukung sambil tetap mempertahankan satu alur kerja berbasis terminal: prompt, alat, agen, MCP, perintah slash, dan output streaming.
 
-[![PR Checks](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml)
-[![Release](https://img.shields.io/github/v/tag/Gitlawb/openclaude?label=release&color=0ea5e9)](https://github.com/Gitlawb/openclaude/tags)
-[![Discussions](https://img.shields.io/badge/discussions-open-7c3aed)](https://github.com/Gitlawb/openclaude/discussions)
+[![PR Checks](https://github.com/Gitlawb/oc/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/Gitlawb/oc/actions/workflows/pr-checks.yml)
+[![Release](https://img.shields.io/github/v/tag/Gitlawb/oc?label=release&color=0ea5e9)](https://github.com/Gitlawb/oc/tags)
+[![Discussions](https://img.shields.io/badge/discussions-open-7c3aed)](https://github.com/Gitlawb/oc/discussions)
 [![Security Policy](https://img.shields.io/badge/security-policy-0f766e)](SECURITY.md)
 [![License](https://img.shields.io/badge/license-MIT-2563eb)](LICENSE)
 
@@ -70,31 +70,31 @@ Gunakan API kompatibel-OpenAI, Gemini, GitHub Models, Codex OAuth, Codex, Ollama
 ### Instalasi
 
 ```bash
-npm install -g @gitlawb/openclaude@latest
+npm install -g @gitlawb/oc@latest
 ```
 
-Jika Anda menggunakan Arch Linux, Anda dapat menginstal OpenClaude dari [paket AUR](https://aur.archlinux.org/packages/openclaude) yang dikelola komunitas:
+Jika Anda menggunakan Arch Linux, Anda dapat menginstal Valarions Claude dari [paket AUR](https://aur.archlinux.org/packages/oc) yang dikelola komunitas:
 ```bash
-paru -S openclaude
+paru -S oc
 ```
 
-Jika setelah instalasi muncul laporan `ripgrep not found`, instal ripgrep di seluruh sistem dan pastikan `rg --version` berfungsi di terminal yang sama sebelum memulai OpenClaude.
+Jika setelah instalasi muncul laporan `ripgrep not found`, instal ripgrep di seluruh sistem dan pastikan `rg --version` berfungsi di terminal yang sama sebelum memulai Valarions Claude.
 
 **Verifikasi / pecahkan masalah versi terinstal:**
 
 ```bash
-openclaude --version
-npm view @gitlawb/openclaude dist-tags
-npm install -g @gitlawb/openclaude@latest
+oc --version
+npm view @gitlawb/oc dist-tags
+npm install -g @gitlawb/oc@latest
 ```
 
 ### Mulai
 
 ```bash
-openclaude
+oc
 ```
 
-Di dalam OpenClaude:
+Di dalam Valarions Claude:
 
 - jalankan `/provider` untuk panduan penyiapan penyedia dan profil tersimpan
 - jalankan `/onboard-github` untuk pendaftaran GitHub Models
@@ -108,7 +108,7 @@ export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_API_KEY=***
 export OPENAI_MODEL=gpt-4o
 
-openclaude
+oc
 ```
 
 Windows PowerShell:
@@ -118,7 +118,7 @@ $env:CLAUDE_CODE_USE_OPENAI="1"
 $env:OPENAI_API_KEY="***"
 $env:OPENAI_MODEL="gpt-4o"
 
-openclaude
+oc
 ```
 
 ### Setup Ollama Lokal Tercepat
@@ -130,7 +130,7 @@ export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
 export OPENAI_MODEL=qwen2.5-coder:7b
 
-openclaude
+oc
 ```
 
 Windows PowerShell:
@@ -140,7 +140,7 @@ $env:CLAUDE_CODE_USE_OPENAI="1"
 $env:OPENAI_BASE_URL="http://localhost:11434/v1"
 $env:OPENAI_MODEL="qwen2.5-coder:7b"
 
-openclaude
+oc
 ```
 
 ## Panduan Setup
@@ -165,7 +165,7 @@ Panduan lanjutan dan build dari sumber:
 | Gemini | `/provider` atau env vars | Mendukung API key saja |
 | GitHub Models | `/onboard-github` | Pendaftaran interaktif dengan kredensial tersimpan |
 | Codex OAuth | `/provider` | Membuka login ChatGPT di peramban Anda dan menyimpan kredensial Codex dengan aman |
-| Codex | `/provider` | Menggunakan otentikasi Codex CLI yang sudah ada, penyimpanan aman OpenClaude, atau kredensial env |
+| Codex | `/provider` | Menggunakan otentikasi Codex CLI yang sudah ada, penyimpanan aman Valarions Claude, atau kredensial env |
 | Gitlawb Opengateway | Default awal, `/provider`, atau env vars | Gateway cerdas di `https://opengateway.gitlawb.com/v1`; memerlukan API key dari https://gitlawb.com/opengateway/keys dan merutekan model mitra Xiaomi MiMo dan GMI Cloud berdasarkan `OPENAI_MODEL` |
 | OpenCode Zen | `/provider` atau env vars | Gateway AI bayar-per-pakai (41 model); menggunakan `OPENCODE_API_KEY` via `https://opencode.ai/zen/v1`; key bersama dengan OpenCode Go |
 | OpenCode Go | `/provider` atau env vars | Langganan $10/bulan untuk model terbuka (12 model); menggunakan `OPENCODE_API_KEY` via `https://opencode.ai/zen/go/v1`; key bersama dengan OpenCode Zen |
@@ -190,9 +190,9 @@ Valarions Claude mendukung banyak penyedia, tetapi perilaku tidak identik di sem
 - Fitur spesifik-Anthropic mungkin tidak ada di penyedia lain
 - Kualitas alat sangat bergantung pada model yang dipilih
 - Model lokal yang lebih kecil dapat kesulitan dengan alur alat multi-langkah yang panjang
-- Beberapa penyedia menerapkan batas output lebih rendah dari default CLI, dan OpenClaude beradaptasi jika memungkinkan
+- Beberapa penyedia menerapkan batas output lebih rendah dari default CLI, dan Valarions Claude beradaptasi jika memungkinkan
 - Gitlawb Opengateway adalah default instalasi baru dan memerlukan API key dari https://gitlawb.com/opengateway/keys. Menggunakan satu base URL kompatibel-OpenAI; beralih antara `mimo-*` dan `google/gemini-3.1-flash-lite-preview` dengan `/model`, dan jangan mengatur base URL ke `/v1/xiaomi-mimo`.
-- Xiaomi MiMo menggunakan otentikasi header `api-key` pada rute kompatibel-OpenAI langsung dan saat ini tidak mendukung pelaporan `/usage` di OpenClaude
+- Xiaomi MiMo menggunakan otentikasi header `api-key` pada rute kompatibel-OpenAI langsung dan saat ini tidak mendukung pelaporan `/usage` di Valarions Claude
 
 Untuk hasil terbaik, gunakan model dengan dukungan pemanggilan alat/fungsi yang kuat.
 
@@ -200,7 +200,7 @@ Untuk hasil terbaik, gunakan model dengan dukungan pemanggilan alat/fungsi yang 
 
 Valarions Claude dapat merutekan agen yang berbeda ke model yang berbeda melalui pengaturan berbasis konfigurasi. Ini berguna untuk optimalisasi biaya atau membagi pekerjaan berdasarkan kekuatan model.
 
-Tambahkan ke `~/.openclaude.json`:
+Tambahkan ke `~/.oc.json`:
 
 ```json
 {
@@ -243,7 +243,7 @@ Secara default, `WebSearch` berfungsi pada model non-Anthropic menggunakan DuckD
 
 > **Catatan:** Fallback DuckDuckGo bekerja dengan mengikis hasil pencarian dan mungkin dibatasi, diblokir, atau tunduk pada Ketentuan Layanan DuckDuckGo. Jika Anda menginginkan opsi yang lebih andal, konfigurasikan Firecrawl.
 
-Untuk backend native-Anthropic dan respons Codex, OpenClaude mempertahankan perilaku pencarian web penyedia asli.
+Untuk backend native-Anthropic dan respons Codex, Valarions Claude mempertahankan perilaku pencarian web penyedia asli.
 
 `WebFetch` berfungsi, tetapi jalur HTTP dasar plus HTML-ke-markdown masih bisa gagal di situs yang dirender JavaScript atau situs yang memblokir permintaan HTTP biasa.
 
@@ -291,7 +291,7 @@ Di terminal terpisah, jalankan:
 npm run dev:grpc:cli
 ```
 
-*Catatan: Definisi gRPC berada di `src/proto/openclaude.proto`. Anda dapat menggunakan file ini untuk menghasilkan klien dalam Python, Go, Rust, atau bahasa lainnya.*
+*Catatan: Definisi gRPC berada di `src/proto/oc.proto`. Anda dapat menggunakan file ini untuk menghasilkan klien dalam Python, Go, Rust, atau bahasa lainnya.*
 
 ---
 
@@ -355,7 +355,7 @@ Validasi kontributor yang disarankan sebelum membuka PR:
 - `bun run test:coverage` untuk cakupan unit yang lebih luas ketika perubahan Anda mempengaruhi runtime bersama atau logika penyedia
 - `bun test ...` terfokus untuk file dan alur yang Anda ubah
 
-Output cakupan ditulis ke `coverage/lcov.info`, dan OpenClaude juga menghasilkan peta panas bergaya aktivitas git di `coverage/index.html`.
+Output cakupan ditulis ke `coverage/lcov.info`, dan Valarions Claude juga menghasilkan peta panas bergaya aktivitas git di `coverage/index.html`.
 
 ## Struktur Repositori
 
@@ -363,13 +363,13 @@ Output cakupan ditulis ke `coverage/lcov.info`, dan OpenClaude juga menghasilkan
 - `scripts/` - skrip build, verifikasi, dan pemeliharaan
 - `docs/` - dokumentasi setup, kontributor, dan proyek
 - `python/` - pembantu Python mandiri dan pengujiannya
-- `vscode-extension/openclaude-vscode/` - Ekstensi VS Code
+- `vscode-extension/oc-vscode/` - Ekstensi VS Code
 - `.github/` - otomatisasi repo, template, dan konfigurasi CI
 - `bin/` - entrypoint peluncur CLI
 
 ## Ekstensi VS Code
 
-Repositori ini menyertakan ekstensi VS Code di [`vscode-extension/openclaude-vscode`](vscode-extension/openclaude-vscode) untuk integrasi peluncuran OpenClaude, UI pusat kendali sadar-penyedia, dan dukungan tema.
+Repositori ini menyertakan ekstensi VS Code di [`vscode-extension/oc-vscode`](vscode-extension/oc-vscode) untuk integrasi peluncuran Valarions Claude, UI pusat kendali sadar-penyedia, dan dukungan tema.
 
 ## Keamanan
 
@@ -377,8 +377,8 @@ Jika Anda yakin menemukan masalah keamanan, lihat [SECURITY.md](SECURITY.md).
 
 ## Komunitas
 
-- Gunakan [GitHub Discussions](https://github.com/Gitlawb/openclaude/discussions) untuk Tanya Jawab, ide, dan percakapan komunitas
-- Gunakan [GitHub Issues](https://github.com/Gitlawb/openclaude/issues) untuk bug yang terkonfirmasi dan pekerjaan fitur yang dapat ditindaklanjuti
+- Gunakan [GitHub Discussions](https://github.com/Gitlawb/oc/discussions) untuk Tanya Jawab, ide, dan percakapan komunitas
+- Gunakan [GitHub Issues](https://github.com/Gitlawb/oc/issues) untuk bug yang terkonfirmasi dan pekerjaan fitur yang dapat ditindaklanjuti
 
 ## Berkontribusi
 

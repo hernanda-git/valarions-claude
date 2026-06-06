@@ -18,7 +18,7 @@ import { getValidationTip } from './settings/validationTips.ts'
 const originalConfigDir = process.env.CLAUDE_CONFIG_DIR
 
 beforeEach(async () => {
-  await acquireSharedMutationLock('openclaudeUiSurfaces.test.ts')
+  await acquireSharedMutationLock('ocUiSurfaces.test.ts')
 })
 
 afterEach(() => {
@@ -33,49 +33,49 @@ afterEach(() => {
   }
 })
 
-describe('OpenClaude settings path surfaces', () => {
-  test('isClaudeSettingsPath recognizes project .openclaude settings files', () => {
+describe('Valarions Claude settings path surfaces', () => {
+  test('isClaudeSettingsPath recognizes project .oc settings files', () => {
     expect(
       isClaudeSettingsPath(
-        join(process.cwd(), '.openclaude', 'settings.json'),
+        join(process.cwd(), '.oc', 'settings.json'),
       ),
     ).toBe(true)
 
     expect(
       isClaudeSettingsPath(
-        join(process.cwd(), '.openclaude', 'settings.local.json'),
+        join(process.cwd(), '.oc', 'settings.local.json'),
       ),
     ).toBe(true)
   })
 
-  test('permission save destinations point user settings to ~/.openclaude', () => {
+  test('permission save destinations point user settings to ~/.oc', () => {
     expect(optionForPermissionSaveDestination('userSettings')).toEqual({
       label: 'User settings',
-      description: 'Saved in ~/.openclaude/settings.json',
+      description: 'Saved in ~/.oc/settings.json',
       value: 'userSettings',
     })
   })
 
-  test('permission save destinations point project settings to .openclaude', () => {
+  test('permission save destinations point project settings to .oc', () => {
     expect(optionForPermissionSaveDestination('projectSettings')).toEqual({
       label: 'Project settings',
-      description: 'Checked in at .openclaude/settings.json',
+      description: 'Checked in at .oc/settings.json',
       value: 'projectSettings',
     })
 
     expect(optionForPermissionSaveDestination('localSettings')).toEqual({
       label: 'Project settings (local)',
-      description: 'Saved in .openclaude/settings.local.json',
+      description: 'Saved in .oc/settings.local.json',
       value: 'localSettings',
     })
   })
 
-  test('permission dialog treats ~/.openclaude as the global Claude folder', () => {
-    process.env.CLAUDE_CONFIG_DIR = join(homedir(), '.openclaude')
+  test('permission dialog treats ~/.oc as the global Claude folder', () => {
+    process.env.CLAUDE_CONFIG_DIR = join(homedir(), '.oc')
 
     expect(
       isInGlobalClaudeFolder(
-        join(homedir(), '.openclaude', 'settings.json'),
+        join(homedir(), '.oc', 'settings.json'),
       ),
     ).toBe(true)
     expect(
@@ -84,25 +84,25 @@ describe('OpenClaude settings path surfaces', () => {
   })
 
   test('permission dialog does not treat arbitrary CLAUDE_CONFIG_DIR as the global Claude folder', () => {
-    process.env.CLAUDE_CONFIG_DIR = join(homedir(), 'custom-openclaude')
+    process.env.CLAUDE_CONFIG_DIR = join(homedir(), 'custom-oc')
 
     expect(
       isInGlobalClaudeFolder(
-        join(homedir(), 'custom-openclaude', 'settings.json'),
+        join(homedir(), 'custom-oc', 'settings.json'),
       ),
     ).toBe(false)
   })
 
-  test('global skill scope recognizes ~/.openclaude and legacy ~/.claude skills', () => {
-    process.env.CLAUDE_CONFIG_DIR = join(homedir(), '.openclaude')
+  test('global skill scope recognizes ~/.oc and legacy ~/.claude skills', () => {
+    process.env.CLAUDE_CONFIG_DIR = join(homedir(), '.oc')
 
     expect(
       getClaudeSkillScope(
-        join(homedir(), '.openclaude', 'skills', 'demo', 'SKILL.md'),
+        join(homedir(), '.oc', 'skills', 'demo', 'SKILL.md'),
       ),
     ).toEqual({
       skillName: 'demo',
-      pattern: '~/.openclaude/skills/demo/**',
+      pattern: '~/.oc/skills/demo/**',
     })
 
     expect(
@@ -116,17 +116,17 @@ describe('OpenClaude settings path surfaces', () => {
   })
 
   test('global skill scope does not emit fixed rules for arbitrary CLAUDE_CONFIG_DIR skills', () => {
-    process.env.CLAUDE_CONFIG_DIR = join(homedir(), 'custom-openclaude')
+    process.env.CLAUDE_CONFIG_DIR = join(homedir(), 'custom-oc')
 
     expect(
       getClaudeSkillScope(
-        join(homedir(), 'custom-openclaude', 'skills', 'demo', 'SKILL.md'),
+        join(homedir(), 'custom-oc', 'skills', 'demo', 'SKILL.md'),
       ),
     ).toBe(null)
   })
 })
 
-describe('OpenClaude validation tips', () => {
+describe('Valarions Claude validation tips', () => {
   test('permissions.defaultMode invalid value keeps suggestion but no Claude docs link', () => {
     const tip = getValidationTip({
       path: 'permissions.defaultMode',
@@ -148,7 +148,7 @@ describe('OpenClaude validation tips', () => {
   })
 })
 
-describe('OpenClaude permission mode surfaces', () => {
+describe('Valarions Claude permission mode surfaces', () => {
   test('default permission mode picker excludes dangerous persisted modes', () => {
     const options = getDefaultPermissionModeOptions(true)
 

@@ -1,4 +1,4 @@
-export const installCommand = 'npm install -g @gitlawb/openclaude@latest'
+export const installCommand = 'npm install -g @gitlawb/oc@latest'
 
 export const features = [
   {
@@ -11,7 +11,7 @@ export const features = [
   },
   {
     title: 'profiles per repo',
-    body: 'save model, base url, auth, and runtime defaults to .openclaude-profile.json so every clone boots the same way.',
+    body: 'save model, base url, auth, and runtime defaults to .oc-profile.json so every clone boots the same way.',
   },
   {
     title: 'streaming, not batch',
@@ -30,6 +30,6 @@ export const features = [
 export const navLinks = [
   { href: '#features', label: 'features' },
   { href: '#install', label: 'install' },
-  { href: 'https://github.com/Gitlawb/openclaude', label: 'github' },
-  { href: 'https://gitlawb.com/node/repos/z6MkqDnb/openclaude', label: 'gitlawb' },
+  { href: 'https://github.com/Gitlawb/oc', label: 'github' },
+  { href: 'https://gitlawb.com/node/repos/z6MkqDnb/oc', label: 'gitlawb' },
 ] as const
