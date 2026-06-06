@@ -1,8 +1,10 @@
-# OpenClaude
+# Valarions Claude
 
-OpenClaude is an open-source coding-agent CLI for cloud and local model providers.
+**Valarions Claude** — CLI coding-agent sumber terbuka untuk penyedia model cloud dan lokal.
 
-Use OpenAI-compatible APIs, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, and other supported backends while keeping one terminal-first workflow: prompts, tools, agents, MCP, slash commands, and streaming output.
+Fork dari [OpenClaude](https://github.com/Gitlawb/openclaude) oleh **GitLawb**, dikustomisasi dan dikelola oleh [Hernanda](https://github.com/hernanda-git).
+
+Gunakan API kompatibel-OpenAI, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, dan backend lain yang didukung sambil tetap mempertahankan satu alur kerja berbasis terminal: prompt, alat, agen, MCP, perintah slash, dan output streaming.
 
 [![PR Checks](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml/badge.svg?branch=main)](https://github.com/Gitlawb/openclaude/actions/workflows/pr-checks.yml)
 [![Release](https://img.shields.io/github/v/tag/Gitlawb/openclaude?label=release&color=0ea5e9)](https://github.com/Gitlawb/openclaude/tags)
@@ -10,12 +12,9 @@ Use OpenAI-compatible APIs, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, A
 [![Security Policy](https://img.shields.io/badge/security-policy-0f766e)](SECURITY.md)
 [![License](https://img.shields.io/badge/license-MIT-2563eb)](LICENSE)
 
-OpenClaude is also mirrored to GitLawb:
-[gitlawb.com/node/repos/z6MkqDnb/openclaude](https://gitlawb.com/node/repos/z6MkqDnb/openclaude)
+[Memulai Cepat](#memulai-cepat) | [Panduan Setup](#panduan-setup) | [Penyedia yang Didukung](#penyedia-yang-didukung) | [Build dari Sumber](#build-dari-sumber-dan-pengembangan-lokal) | [Ekstensi VS Code](#ekstensi-vs-code) | [Sponsor](#sponsor) | [Komunitas](#komunitas)
 
-[Quick Start](#quick-start) | [Setup Guides](#setup-guides) | [Providers](#supported-providers) | [Source Build](#source-build-and-local-development) | [VS Code Extension](#vs-code-extension) | [Sponsors](#sponsors) | [Community](#community)
-
-## Sponsors
+## Sponsor
 
 <table align="center">
   <tr>
@@ -54,34 +53,34 @@ OpenClaude is also mirrored to GitLawb:
   </tr>
 </table>
 
-## Star History
+## Riwayat Bintang
 
 [![Star History Chart](https://api.star-history.com/chart?repos=gitlawb/openclaude&type=date&legend=top-left)](https://www.star-history.com/?repos=gitlawb%2Fopenclaude&type=date&legend=top-left)
 
-## Why OpenClaude
+## Mengapa Valarions Claude
 
-- Use one CLI across cloud APIs and local model backends
-- Save provider profiles inside the app with `/provider`
-- Run with OpenAI-compatible services, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, and other supported providers
-- Keep coding-agent workflows in one place: bash, file tools, grep, glob, agents, tasks, MCP, and web tools
-- Use the bundled VS Code extension for launch integration and theme support
+- Gunakan satu CLI di berbagai API cloud dan backend model lokal
+- Simpan profil penyedia di dalam aplikasi dengan `/provider`
+- Jalankan dengan layanan kompatibel-OpenAI, Gemini, GitHub Models, Codex OAuth, Codex, Ollama, Atomic Chat, dan penyedia lain yang didukung
+- Pertahankan alur kerja coding-agent di satu tempat: bash, alat file, grep, glob, agen, tugas, MCP, dan alat web
+- Gunakan ekstensi VS Code bawaan untuk integrasi peluncuran dan dukungan tema
 
-## Quick Start
+## Memulai Cepat
 
-### Install
+### Instalasi
 
 ```bash
 npm install -g @gitlawb/openclaude@latest
 ```
 
-If you're on Arch Linux, you can install OpenClaude from the community-maintained [AUR package](https://aur.archlinux.org/packages/openclaude):
+Jika Anda menggunakan Arch Linux, Anda dapat menginstal OpenClaude dari [paket AUR](https://aur.archlinux.org/packages/openclaude) yang dikelola komunitas:
 ```bash
 paru -S openclaude
 ```
 
-If the install later reports `ripgrep not found`, install ripgrep system-wide and confirm `rg --version` works in the same terminal before starting OpenClaude.
+Jika setelah instalasi muncul laporan `ripgrep not found`, instal ripgrep di seluruh sistem dan pastikan `rg --version` berfungsi di terminal yang sama sebelum memulai OpenClaude.
 
-**Verify / troubleshoot installed version:**
+**Verifikasi / pecahkan masalah versi terinstal:**
 
 ```bash
 openclaude --version
@@ -89,24 +88,24 @@ npm view @gitlawb/openclaude dist-tags
 npm install -g @gitlawb/openclaude@latest
 ```
 
-### Start
+### Mulai
 
 ```bash
 openclaude
 ```
 
-Inside OpenClaude:
+Di dalam OpenClaude:
 
-- run `/provider` for guided provider setup and saved profiles
-- run `/onboard-github` for GitHub Models onboarding
+- jalankan `/provider` untuk panduan penyiapan penyedia dan profil tersimpan
+- jalankan `/onboard-github` untuk pendaftaran GitHub Models
 
-### Fastest OpenAI setup
+### Setup OpenAI Tercepat
 
 macOS / Linux:
 
 ```bash
 export CLAUDE_CODE_USE_OPENAI=1
-export OPENAI_API_KEY=sk-your-key-here
+export OPENAI_API_KEY=***
 export OPENAI_MODEL=gpt-4o
 
 openclaude
@@ -116,13 +115,13 @@ Windows PowerShell:
 
 ```powershell
 $env:CLAUDE_CODE_USE_OPENAI="1"
-$env:OPENAI_API_KEY="sk-your-key-here"
+$env:OPENAI_API_KEY="***"
 $env:OPENAI_MODEL="gpt-4o"
 
 openclaude
 ```
 
-### Fastest local Ollama setup
+### Setup Ollama Lokal Tercepat
 
 macOS / Linux:
 
@@ -144,64 +143,64 @@ $env:OPENAI_MODEL="qwen2.5-coder:7b"
 openclaude
 ```
 
-## Setup Guides
+## Panduan Setup
 
-Beginner-friendly guides:
+Panduan ramah-pemula:
 
-- [Non-Technical Setup](docs/non-technical-setup.md)
-- [Windows Quick Start](docs/quick-start-windows.md)
-- [macOS / Linux Quick Start](docs/quick-start-mac-linux.md)
+- [Setup Non-Teknis](docs/non-technical-setup.md)
+- [Panduan Cepat Windows](docs/quick-start-windows.md)
+- [Panduan Cepat macOS / Linux](docs/quick-start-mac-linux.md)
 
-Advanced and source-build guides:
+Panduan lanjutan dan build dari sumber:
 
-- [Advanced Setup](docs/advanced-setup.md)
-- [Android Install](ANDROID_INSTALL.md)
+- [Setup Lanjutan](docs/advanced-setup.md)
+- [Instalasi Android](ANDROID_INSTALL.md)
 
-## Supported Providers
+## Penyedia yang Didukung
 
-| Provider | Setup Path | Notes |
+| Penyedia | Jalur Setup | Catatan |
 | --- | --- | --- |
-| OpenAI-compatible | `/provider` or env vars | Works with OpenAI, OpenRouter, DeepSeek, Groq, Mistral, LM Studio, and other compatible `/v1` servers |
-| Hicap | `/provider` or OpenAI-compatible env vars | Uses `api-key` auth, discovers models from unauthenticated `/models`, and supports Responses mode for `gpt-` models |
-| Gemini | `/provider` or env vars | Supports API key only |
-| GitHub Models | `/onboard-github` | Interactive onboarding with saved credentials |
-| Codex OAuth | `/provider` | Opens ChatGPT sign-in in your browser and stores Codex credentials securely |
-| Codex | `/provider` | Uses existing Codex CLI auth, OpenClaude secure storage, or env credentials |
-| Gitlawb Opengateway | Startup default, `/provider`, or env vars | Smart gateway at `https://opengateway.gitlawb.com/v1`; requires an API key from https://gitlawb.com/opengateway/keys and routes Xiaomi MiMo and GMI Cloud partner models by `OPENAI_MODEL` |
-| OpenCode Zen | `/provider` or env vars | Pay-as-you-go AI gateway (41 models); uses `OPENCODE_API_KEY` via `https://opencode.ai/zen/v1`; shared key with OpenCode Go |
-| OpenCode Go | `/provider` or env vars | $10/mo subscription for open models (12 models); uses `OPENCODE_API_KEY` via `https://opencode.ai/zen/go/v1`; shared key with OpenCode Zen |
-| Xiaomi MiMo | `/provider` or env vars | OpenAI-compatible API at `https://mimo.mi.com`; uses `MIMO_API_KEY` and defaults to `mimo-v2.5-pro` |
-| Ollama | `/provider` or env vars | Local inference with no API key |
-| Atomic Chat | `/provider`, env vars, or `bun run dev:atomic-chat` | Local Model Provider; auto-detects loaded models |
-| Bedrock / Vertex / Foundry | env vars | Anthropic-family cloud routes; Vertex is for Claude on Vertex AI, not arbitrary Model Garden models |
+| Kompatibel-OpenAI | `/provider` atau env vars | Bekerja dengan OpenAI, OpenRouter, DeepSeek, Groq, Mistral, LM Studio, dan server `/v1` kompatibel lainnya |
+| Hicap | `/provider` atau env vars kompatibel-OpenAI | Menggunakan otentikasi `api-key`, menemukan model dari `/models` tanpa autentikasi, dan mendukung mode Responses untuk model `gpt-` |
+| Gemini | `/provider` atau env vars | Mendukung API key saja |
+| GitHub Models | `/onboard-github` | Pendaftaran interaktif dengan kredensial tersimpan |
+| Codex OAuth | `/provider` | Membuka login ChatGPT di peramban Anda dan menyimpan kredensial Codex dengan aman |
+| Codex | `/provider` | Menggunakan otentikasi Codex CLI yang sudah ada, penyimpanan aman OpenClaude, atau kredensial env |
+| Gitlawb Opengateway | Default awal, `/provider`, atau env vars | Gateway cerdas di `https://opengateway.gitlawb.com/v1`; memerlukan API key dari https://gitlawb.com/opengateway/keys dan merutekan model mitra Xiaomi MiMo dan GMI Cloud berdasarkan `OPENAI_MODEL` |
+| OpenCode Zen | `/provider` atau env vars | Gateway AI bayar-per-pakai (41 model); menggunakan `OPENCODE_API_KEY` via `https://opencode.ai/zen/v1`; key bersama dengan OpenCode Go |
+| OpenCode Go | `/provider` atau env vars | Langganan $10/bulan untuk model terbuka (12 model); menggunakan `OPENCODE_API_KEY` via `https://opencode.ai/zen/go/v1`; key bersama dengan OpenCode Zen |
+| Xiaomi MiMo | `/provider` atau env vars | API kompatibel-OpenAI di `https://mimo.mi.com`; menggunakan `MIMO_API_KEY` dan default ke `mimo-v2.5-pro` |
+| Ollama | `/provider` atau env vars | Inferensi lokal tanpa API key |
+| Atomic Chat | `/provider`, env vars, atau `bun run dev:atomic-chat` | Penyedia Model Lokal; mendeteksi model yang dimuat secara otomatis |
+| Bedrock / Vertex / Foundry | env vars | Rute cloud keluarga Anthropic; Vertex untuk Claude di Vertex AI, bukan model Model Garden sembarang |
 
-## What Works
+## Yang Berfungsi
 
-- **Tool-driven coding workflows**: Bash, file read/write/edit, grep, glob, agents, tasks, MCP, and slash commands
-- **Streaming responses**: Real-time token output and tool progress
-- **Tool calling**: Multi-step tool loops with model calls, tool execution, and follow-up responses
-- **Images**: URL and base64 image inputs for providers that support vision
-- **Provider profiles**: Guided setup plus saved user-level provider profile support
-- **Local and remote model backends**: Cloud APIs, local servers, and Apple Silicon local inference
+- **Alur kerja berbasis alat**: Bash, baca/tulis/edit file, grep, glob, agen, tugas, MCP, dan perintah slash
+- **Respons streaming**: Output token waktu-nyata dan progres alat
+- **Pemanggilan alat**: Perulangan alat multi-langkah dengan panggilan model, eksekusi alat, dan respons lanjutan
+- **Gambar**: Input URL dan base64 untuk penyedia yang mendukung vision
+- **Profil penyedia**: Setup terbimbing plus dukungan profil penyedia tingkat pengguna tersimpan
+- **Backend model lokal dan jarak jauh**: API cloud, server lokal, dan inferensi lokal Apple Silicon
 
-## Provider Notes
+## Catatan Penyedia
 
-OpenClaude supports multiple providers, but behavior is not identical across all of them.
+Valarions Claude mendukung banyak penyedia, tetapi perilaku tidak identik di semua penyedia.
 
-- Anthropic-specific features may not exist on other providers
-- Tool quality depends heavily on the selected model
-- Smaller local models can struggle with long multi-step tool flows
-- Some providers impose lower output caps than the CLI defaults, and OpenClaude adapts where possible
-- Gitlawb Opengateway is the fresh-install startup default and requires an API key from https://gitlawb.com/opengateway/keys. It uses one OpenAI-compatible base URL; switch between `mimo-*` and `google/gemini-3.1-flash-lite-preview` with `/model`, and do not pin the base URL to `/v1/xiaomi-mimo`.
-- Xiaomi MiMo uses `api-key` header auth on the direct OpenAI-compatible route and currently does not support `/usage` reporting in OpenClaude
+- Fitur spesifik-Anthropic mungkin tidak ada di penyedia lain
+- Kualitas alat sangat bergantung pada model yang dipilih
+- Model lokal yang lebih kecil dapat kesulitan dengan alur alat multi-langkah yang panjang
+- Beberapa penyedia menerapkan batas output lebih rendah dari default CLI, dan OpenClaude beradaptasi jika memungkinkan
+- Gitlawb Opengateway adalah default instalasi baru dan memerlukan API key dari https://gitlawb.com/opengateway/keys. Menggunakan satu base URL kompatibel-OpenAI; beralih antara `mimo-*` dan `google/gemini-3.1-flash-lite-preview` dengan `/model`, dan jangan mengatur base URL ke `/v1/xiaomi-mimo`.
+- Xiaomi MiMo menggunakan otentikasi header `api-key` pada rute kompatibel-OpenAI langsung dan saat ini tidak mendukung pelaporan `/usage` di OpenClaude
 
-For best results, use models with strong tool/function calling support.
+Untuk hasil terbaik, gunakan model dengan dukungan pemanggilan alat/fungsi yang kuat.
 
-## Agent Routing
+## Perutean Agen
 
-OpenClaude can route different agents to different models through settings-based routing. This is useful for cost optimization or splitting work by model strength.
+Valarions Claude dapat merutekan agen yang berbeda ke model yang berbeda melalui pengaturan berbasis konfigurasi. Ini berguna untuk optimalisasi biaya atau membagi pekerjaan berdasarkan kekuatan model.
 
-Add to `~/.openclaude.json`:
+Tambahkan ke `~/.openclaude.json`:
 
 ```json
 {
@@ -230,73 +229,73 @@ Add to `~/.openclaude.json`:
 }
 ```
 
-When no routing match is found, the global provider remains the fallback.
+Ketika tidak ada kecocokan perutean, penyedia global tetap menjadi fallback.
 
-`agentRouting` values and explicit Agent tool `model` overrides match keys in `agentModels`. By default, that key is also the model string sent to the provider. Set `agentModels.<key>.model` when you want a local route key such as `zai-default` to call a different provider model name such as `glm-5.1`.
+Nilai `agentRouting` dan override `model` alat Agen eksplisit cocok dengan kunci di `agentModels`. Secara default, kunci tersebut juga merupakan string model yang dikirim ke penyedia. Atur `agentModels.<key>.model` ketika Anda ingin kunci rute lokal seperti `zai-default` memanggil nama model penyedia yang berbeda seperti `glm-5.1`.
 
-> **Note:** `/provider` changes the global/parent provider for your current session. `agentModels` and `agentRouting` are specifically for configuring per-agent provider overrides while keeping the parent session unchanged.
+> **Catatan:** `/provider` mengubah penyedia global/induk untuk sesi Anda saat ini. `agentModels` dan `agentRouting` khusus untuk mengonfigurasi override penyedia per-agen sambil menjaga sesi induk tidak berubah.
 
-> **Note:** `api_key` values in `settings.json` are stored in plaintext. Keep this file private and do not commit it to version control.
+> **Catatan:** Nilai `api_key` di `settings.json` disimpan dalam teks biasa. Jaga kerahasiaan file ini dan jangan commit ke kontrol versi.
 
-## Web Search and Fetch
+## Pencarian Web dan Ambil Data
 
-By default, `WebSearch` works on non-Anthropic models using DuckDuckGo. This gives GPT-4o, DeepSeek, Gemini, Ollama, and other OpenAI-compatible providers a free web search path out of the box.
+Secara default, `WebSearch` berfungsi pada model non-Anthropic menggunakan DuckDuckGo. Ini memberikan GPT-4o, DeepSeek, Gemini, Ollama, dan penyedia kompatibel-OpenAI lainnya jalur pencarian web gratis.
 
-> **Note:** DuckDuckGo fallback works by scraping search results and may be rate-limited, blocked, or subject to DuckDuckGo's Terms of Service. If you want a more reliable supported option, configure Firecrawl.
+> **Catatan:** Fallback DuckDuckGo bekerja dengan mengikis hasil pencarian dan mungkin dibatasi, diblokir, atau tunduk pada Ketentuan Layanan DuckDuckGo. Jika Anda menginginkan opsi yang lebih andal, konfigurasikan Firecrawl.
 
-For Anthropic-native backends and Codex responses, OpenClaude keeps the native provider web search behavior.
+Untuk backend native-Anthropic dan respons Codex, OpenClaude mempertahankan perilaku pencarian web penyedia asli.
 
-`WebFetch` works, but its basic HTTP plus HTML-to-markdown path can still fail on JavaScript-rendered sites or sites that block plain HTTP requests.
+`WebFetch` berfungsi, tetapi jalur HTTP dasar plus HTML-ke-markdown masih bisa gagal di situs yang dirender JavaScript atau situs yang memblokir permintaan HTTP biasa.
 
-Set a [Firecrawl](https://firecrawl.dev) API key if you want Firecrawl-powered search/fetch behavior:
+Atur kunci API [Firecrawl](https://firecrawl.dev) jika Anda menginginkan perilaku pencarian/ambil data bertenaga Firecrawl:
 
 ```bash
 export FIRECRAWL_API_KEY=your-key-here
 ```
 
-With Firecrawl enabled:
+Dengan Firecrawl diaktifkan:
 
-- `WebSearch` can use Firecrawl's search API while DuckDuckGo remains the default free path for non-Claude models
-- `WebFetch` uses Firecrawl's scrape endpoint instead of raw HTTP, handling JS-rendered pages correctly
+- `WebSearch` dapat menggunakan API pencarian Firecrawl sementara DuckDuckGo tetap menjadi jalur gratis default untuk model non-Claude
+- `WebFetch` menggunakan endpoint scrape Firecrawl alih-alih HTTP mentah, menangani halaman yang dirender JS dengan benar
 
-Free tier at [firecrawl.dev](https://firecrawl.dev) includes 500 credits. The key is optional.
+Tingkat gratis di [firecrawl.dev](https://firecrawl.dev) mencakup 500 kredit. Kunci bersifat opsional.
 
 ---
 
-## Headless gRPC Server
+## Server gRPC Tanpa Kepala
 
-OpenClaude can be run as a headless gRPC service, allowing you to integrate its agentic capabilities (tools, bash, file editing) into other applications, CI/CD pipelines, or custom user interfaces. The server uses bidirectional streaming to send real-time text chunks, tool calls, and request permissions for sensitive commands.
+Valarions Claude dapat dijalankan sebagai layanan gRPC tanpa kepala, memungkinkan Anda mengintegrasikan kemampuan agennya (alat, bash, pengeditan file) ke dalam aplikasi lain, pipeline CI/CD, atau antarmuka pengguna kustom. Server menggunakan streaming dua arah untuk mengirim potongan teks waktu-nyata, panggilan alat, dan meminta izin untuk perintah sensitif.
 
-### 1. Start the gRPC Server
+### 1. Mulai Server gRPC
 
-Start the core engine as a gRPC service on `localhost:50051`:
+Mulai mesin inti sebagai layanan gRPC di `localhost:50051`:
 
 ```bash
 npm run dev:grpc
 ```
 
-#### Configuration
+#### Konfigurasi
 
-| Variable | Default | Description |
+| Variabel | Default | Deskripsi |
 |-----------|-------------|------------------------------------------------|
-| `GRPC_PORT` | `50051` | Port the gRPC server listens on |
-| `GRPC_HOST` | `localhost` | Bind address. Use `0.0.0.0` to expose on all interfaces (not recommended without authentication) |
+| `GRPC_PORT` | `50051` | Port yang digunakan server gRPC |
+| `GRPC_HOST` | `localhost` | Alamat bind. Gunakan `0.0.0.0` untuk mengekspos di semua antarmuka (tidak disarankan tanpa autentikasi) |
 
-### 2. Run the Test CLI Client
+### 2. Jalankan Klien CLI Uji
 
-We provide a lightweight CLI client that communicates exclusively over gRPC. It acts just like the main interactive CLI, rendering colors, streaming tokens, and prompting you for tool permissions (y/n) via the gRPC `action_required` event.
+Kami menyediakan klien CLI ringan yang berkomunikasi secara eksklusif melalui gRPC. Berfungsi seperti CLI interaktif utama, merender warna, streaming token, dan meminta izin alat (y/n) melalui event `action_required` gRPC.
 
-In a separate terminal, run:
+Di terminal terpisah, jalankan:
 
 ```bash
 npm run dev:grpc:cli
 ```
 
-*Note: The gRPC definitions are located in `src/proto/openclaude.proto`. You can use this file to generate clients in Python, Go, Rust, or any other language.*
+*Catatan: Definisi gRPC berada di `src/proto/openclaude.proto`. Anda dapat menggunakan file ini untuk menghasilkan klien dalam Python, Go, Rust, atau bahasa lainnya.*
 
 ---
 
-## Source Build And Local Development
+## Build dari Sumber dan Pengembangan Lokal
 
 ```bash
 bun install
@@ -304,7 +303,7 @@ bun run build
 node dist/cli.mjs
 ```
 
-Helpful commands:
+Perintah yang berguna:
 
 - `bun run dev`
 - `bun test`
@@ -313,91 +312,92 @@ Helpful commands:
 - `bun run smoke`
 - `bun run doctor:runtime`
 - `bun run verify:privacy`
-- focused `bun test ...` runs for the areas you touch
+- `bun test ...` terfokus untuk area yang Anda sentuh
 
-## Testing And Coverage
+## Pengujian dan Cakupan
 
-OpenClaude uses Bun's built-in test runner for unit tests.
+Valarions Claude menggunakan penguji bawaan Bun untuk pengujian unit.
 
-Run the full unit suite:
+Jalankan suite unit lengkap:
 
 ```bash
 bun test
 ```
 
-Generate unit test coverage:
+Hasilkan cakupan pengujian unit:
 
 ```bash
 bun run test:coverage
 ```
 
-Open the visual coverage report:
+Buka laporan cakupan visual:
 
 ```bash
 open coverage/index.html
 ```
 
-If you already have `coverage/lcov.info` and only want to rebuild the UI:
+Jika Anda sudah memiliki `coverage/lcov.info` dan hanya ingin membangun ulang UI:
 
 ```bash
 bun run test:coverage:ui
 ```
 
-Use focused test runs when you only touch one area:
+Gunakan pengujian terfokus ketika Anda hanya menyentuh satu area:
 
 - `bun run test:provider`
 - `bun run test:provider-recommendation`
 - `bun test path/to/file.test.ts`
 
-Recommended contributor validation before opening a PR:
+Validasi kontributor yang disarankan sebelum membuka PR:
 
 - `bun run build`
 - `bun run smoke`
-- `bun run test:coverage` for broader unit coverage when your change affects shared runtime or provider logic
-- focused `bun test ...` runs for the files and flows you changed
+- `bun run test:coverage` untuk cakupan unit yang lebih luas ketika perubahan Anda mempengaruhi runtime bersama atau logika penyedia
+- `bun test ...` terfokus untuk file dan alur yang Anda ubah
 
-Coverage output is written to `coverage/lcov.info`, and OpenClaude also generates a git-activity-style heatmap at `coverage/index.html`.
-## Repository Structure
+Output cakupan ditulis ke `coverage/lcov.info`, dan OpenClaude juga menghasilkan peta panas bergaya aktivitas git di `coverage/index.html`.
 
-- `src/` - core CLI/runtime
-- `scripts/` - build, verification, and maintenance scripts
-- `docs/` - setup, contributor, and project documentation
-- `python/` - standalone Python helpers and their tests
-- `vscode-extension/openclaude-vscode/` - VS Code extension
-- `.github/` - repo automation, templates, and CI configuration
-- `bin/` - CLI launcher entrypoints
+## Struktur Repositori
 
-## VS Code Extension
+- `src/` - CLI/runtime inti
+- `scripts/` - skrip build, verifikasi, dan pemeliharaan
+- `docs/` - dokumentasi setup, kontributor, dan proyek
+- `python/` - pembantu Python mandiri dan pengujiannya
+- `vscode-extension/openclaude-vscode/` - Ekstensi VS Code
+- `.github/` - otomatisasi repo, template, dan konfigurasi CI
+- `bin/` - entrypoint peluncur CLI
 
-The repo includes a VS Code extension in [`vscode-extension/openclaude-vscode`](vscode-extension/openclaude-vscode) for OpenClaude launch integration, provider-aware control-center UI, and theme support.
+## Ekstensi VS Code
 
-## Security
+Repositori ini menyertakan ekstensi VS Code di [`vscode-extension/openclaude-vscode`](vscode-extension/openclaude-vscode) untuk integrasi peluncuran OpenClaude, UI pusat kendali sadar-penyedia, dan dukungan tema.
 
-If you believe you found a security issue, see [SECURITY.md](SECURITY.md).
+## Keamanan
 
-## Community
+Jika Anda yakin menemukan masalah keamanan, lihat [SECURITY.md](SECURITY.md).
 
-- Use [GitHub Discussions](https://github.com/Gitlawb/openclaude/discussions) for Q&A, ideas, and community conversation
-- Use [GitHub Issues](https://github.com/Gitlawb/openclaude/issues) for confirmed bugs and actionable feature work
+## Komunitas
 
-## Contributing
+- Gunakan [GitHub Discussions](https://github.com/Gitlawb/openclaude/discussions) untuk Tanya Jawab, ide, dan percakapan komunitas
+- Gunakan [GitHub Issues](https://github.com/Gitlawb/openclaude/issues) untuk bug yang terkonfirmasi dan pekerjaan fitur yang dapat ditindaklanjuti
 
-Contributions are welcome.
+## Berkontribusi
 
-For larger changes, open an issue first so the scope is clear before implementation. Helpful validation commands include:
+Kontribusi sangat diterima.
+
+Untuk perubahan besar, buka issue terlebih dahulu agar ruang lingkup jelas sebelum implementasi. Perintah validasi yang membantu meliputi:
 
 - `bun run build`
 - `bun run test:coverage`
 - `bun run smoke`
-- focused `bun test ...` runs for files and flows you changed
+- `bun test ...` terfokus untuk file dan alur yang Anda ubah
 
 
-## Disclaimer
+## Penyangkalan
 
-OpenClaude is an independent community project and is not affiliated with, endorsed by, or sponsored by Anthropic.
+Valarions Claude adalah proyek komunitas independen dan tidak berafiliasi dengan, didukung oleh, atau disponsori oleh Anthropic.
 
-OpenClaude originated from the Claude Code codebase and has since been substantially modified to support multiple providers and open use. "Claude" and "Claude Code" are trademarks of Anthropic PBC. See [LICENSE](LICENSE) for details.
+Valarions Claude berasal dari basis kode Claude Code dan telah dimodifikasi secara substansial untuk mendukung banyak penyedia dan penggunaan terbuka. "Claude" dan "Claude Code" adalah merek dagang dari Anthropic PBC. Lihat [LICENSE](LICENSE) untuk detailnya.
 
-## License
+## Lisensi
 
-See [LICENSE](LICENSE).
+Lihat [LICENSE](LICENSE).
