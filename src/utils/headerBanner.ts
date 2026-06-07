@@ -25,7 +25,10 @@
 export const BANNER_WORDS = ['HERNANDA', 'AGENT']
 
 /** Tagline shown below logo in StartupScreen */
-export const TAGLINE = 'Any model. Every tool. Zero limits.'
+export const TAGLINE = '✦ Lebih pintar dari asisten, lebih tangguh dari tim IT. ✦'
+
+/** Sub tagline */
+export const SUB_TAGLINE = '// Dari Sabang sampai Merauke — satu agen untuk semua pekerjaan.'
 
 /** Border title in LogoV2 */
 export const BORDER_TITLE = 'Hernanda Agent'
@@ -46,17 +49,17 @@ export const VERSION_PREFIX = 'oc'
  */
 export const STARTUP_PALETTE = {
   gradient: [
-    [180, 230, 255], // very light blue
-    [140, 210, 250], // light blue
-    [100, 190, 245], // sky blue
-    [70, 165, 235],  // medium light blue
-    [50, 140, 220],  // blue
-    [35, 115, 200],  // darker blue
+    [179, 229, 252], // c1 very light blue
+    [129, 212, 250], // c2 light blue
+    [79, 195, 247],  // c3 medium light blue
+    [41, 182, 246],  // c4 blue
+    [3, 155, 229],   // c5 darker blue
+    [2, 119, 189],   // c6 dark blue
   ],
-  accent: [100, 190, 245],
-  cream: [210, 230, 250],
-  dim: [100, 140, 180],
-  border: [70, 110, 150],
+  accent: [179, 229, 252],
+  cream: [79, 195, 247],
+  dim: [30, 77, 122],
+  border: [14, 42, 71],
 } as const
 
 /**
@@ -65,9 +68,12 @@ export const STARTUP_PALETTE = {
  * The gradient cycles: 2 rows color-1, 2 rows color-2, 2 rows color-3
  */
 export const INK_GRADIENT = [
-  '#81D4FA', '#81D4FA',   // light blue (rows 1-2)
-  '#4FC3F7', '#4FC3F7',   // medium light blue (rows 3-4)
-  '#29B6F6', '#29B6F6',   // blue (rows 5-6)
+  '#b3e5fc', // c1 very light blue (row 1)
+  '#81d4fa', // c2 light blue (row 2)
+  '#4fc3f7', // c3 medium light blue (row 3)
+  '#29b6f6', // c4 blue (row 4)
+  '#039be5', // c5 darker blue (row 5)
+  '#0277bd', // c6 dark blue (row 6)
 ] as const
 
 
@@ -166,44 +172,44 @@ export const LOGO_HERNANDA = generateStartupLogoArray()
 // ═══════════════════════════════════════════════
 
 /**
- * Generate individual banner text lines for LogoV2 Ink React.
- * Returns arrays of { text, color } objects for each word.
- * Each word gets a fresh gradient cycle.
+ * Hardcoded banner text lines for LogoV2 Ink React.
+ * Letters use the exact design from the HTML reference.
+ * Each word block gets its own gradient cycle.
  */
-function generateInkBannerData(): { text: string; color: string }[][] {
-  const wordData: { text: string; color: string }[][] = []
 
-  for (const word of BANNER_WORDS) {
-    const letters = [...word].map(ch => FONT_6ROW[ch] ?? Array(6).fill(' '.repeat(8)))
-    const lines: { text: string; color: string }[] = []
+// HERNANDA — 6 rows (c1 → c2 → c3 → c4 → c5 → c6)
+const HERNANDA_LINES: string[] = [
+  '██╗ ██╗ ███████╗ ██████╗ ███╗ ██╗ █████╗ ███╗ ██╗ ██████╗ █████╗',
+  '██║ ██║ ██╔════╝ ██╔══██╗ ████╗ ██║ ██╔══██╗ ████╗ ██║ ██╔══██╗ ██╔══██╗',
+  '███████║ █████╗ ██████╔╝ ██╔██╗██║ ███████║ ██╔██╗██║ ██║ ██║ ███████║',
+  '██╔══██║ ██╔══╝ ██╔══██╗ ██║╚████║ ██╔══██║ ██║╚████║ ██║ ██║ ██╔══██║',
+  '██║ ██║ ███████╗ ██║ ██║ ██║ ╚███║ ██║ ██║ ██║ ╚███║ ██████╔╝ ██║ ██║',
+  '╚═╝ ╚═╝ ╚══════╝ ╚═╝ ╚═╝ ╚═╝ ╚══╝ ╚═╝ ╚═╝ ╚═╝ ╚══╝ ╚═════╝ ╚═╝ ╚═╝',
+]
 
-    // Pad all letters to uniform width (find max width first)
-    const maxW = Math.max(...letters.flat().map(l => l.length))
-    const padded = letters.map(l => l.map(s => padEnd(s, maxW)))
+// AGENT — 6 rows (c2 → c3 → c4 → c5 → c6 → c6)
+const AGENT_LINES: string[] = [
+  '█████╗ ██████╗ ███████╗ ███╗ ██╗ ████████╗',
+  '██╔══██╗ ██╔════╝ ██╔════╝ ████╗ ██║ ╚══██╔══╝',
+  '███████║ ██║ ███╗ █████╗ ██╔██╗██║ ██║',
+  '██╔══██║ ██║ ██║ ██╔══╝ ██║╚████║ ██║',
+  '██║ ██║ ╚██████╔╝ ███████╗ ██║ ╚███║ ██║',
+  '╚═╝ ╚═╝ ╚═════╝ ╚══════╝ ╚═╝ ╚══╝ ╚═╝',
+]
 
-    for (let r = 0; r < 6; r++) {
-      const text = padded.map(l => l[r] + '  ').join('').replace(/\s+$/, '')
-      const color = INK_GRADIENT[r] ?? '#81D4FA'
-      lines.push({ text, color })
-    }
-    wordData.push(lines)
-  }
-  return wordData
-}
+// Gradient per row (HERNANDA: c1-c6, AGENT: shifted: c2-c6,c6)
+const HERNANDA_GRADIENT = ['#b3e5fc', '#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0277bd']
+const AGENT_GRADIENT =   ['#81d4fa', '#4fc3f7', '#29b6f6', '#039be5', '#0277bd', '#0277bd']
 
-/** Pre-built Ink banner lines for all words combined */
-const INK_BANNER_DATA = generateInkBannerData()
+export const INK_BANNER_LINES: { text: string; color: string }[] = [
+  ...HERNANDA_LINES.map((text, i) => ({ text, color: HERNANDA_GRADIENT[i] })),
+  ...AGENT_LINES.map((text, i) => ({ text, color: AGENT_GRADIENT[i] })),
+]
 
-/** Individual text lines with their colors (flat array, all words sequential) */
-export const INK_BANNER_LINES: { text: string; color: string }[] =
-  INK_BANNER_DATA.flat()
-
-/**
- * Individual text lines by word index.
- * INK_BANNER_BY_WORD[0] = HERNANDA lines
- * INK_BANNER_BY_WORD[1] = AGENT lines
- */
-export const INK_BANNER_BY_WORD = INK_BANNER_DATA
+export const INK_BANNER_BY_WORD = [
+  HERNANDA_LINES.map((text, i) => ({ text, color: HERNANDA_GRADIENT[i] })),
+  AGENT_LINES.map((text, i) => ({ text, color: AGENT_GRADIENT[i] })),
+]
 
 
 // ═══════════════════════════════════════════════

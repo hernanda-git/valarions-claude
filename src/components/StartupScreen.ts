@@ -188,7 +188,8 @@ export function printStartupScreen(modelOverride?: string): void {
   out.push('')
 
   // Tagline
-  out.push(`  ${ansiRgb(...ACCENT)}\u2726${RESET} ${ansiRgb(...CREAM)}Any model. Every tool. Zero limits.${RESET} ${ansiRgb(...ACCENT)}\u2726${RESET}`)
+  out.push(`  ${ansiRgb(...ACCENT)}\\u2726${RESET} ${ansiRgb(...CREAM)}Lebih pintar dari asisten, lebih tangguh dari tim IT.${RESET} ${ansiRgb(...ACCENT)}\\u2726${RESET}`)
+  out.push(`  ${ansiRgb(...DIMCOL)}// Dari Sabang sampai Merauke — satu agen untuk semua pekerjaan.${RESET}`)
   out.push('')
 
   // Provider info box
