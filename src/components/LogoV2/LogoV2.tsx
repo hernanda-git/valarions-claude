@@ -4,7 +4,8 @@ import * as React from 'react';
 import { Box, Text, color } from '../../ink.js';
 import { useTerminalSize } from '../../hooks/useTerminalSize.js';
 import { stringWidth } from '../../ink/stringWidth.js';
-import { getLayoutMode, calculateLayoutDimensions, calculateOptimalLeftWidth, formatWelcomeMessage, truncatePath, getRecentActivitySync, getRecentReleaseNotesSync, getLogoDisplayData } from '../../utils/logoV2Utils.js';
+import { getLayoutMode, calculateLayoutDimensions, calculateOptimalLeftWidth, formatWelcomeMessage, truncatePath, getRecentActivitySync, getRecentReleaseNotesSync, getLogoDisplayData } from '../../utils/logoV2Utils.js'
+// Banner text generated from ../../utils/headerBanner.ts — edit config there;
 import { truncate } from '../../utils/format.js';
 import { getDisplayPath } from '../../utils/file.js';
 import { Clawd } from './Clawd.js';
@@ -251,8 +252,8 @@ export function LogoV2() {
   }
   const layoutMode = getLayoutMode(columns);
   const userTheme = resolveThemeSetting(getGlobalConfig().theme);
-  const borderTitle = ` ${color("text", userTheme)("OpenClaude")} ${color("inactive", userTheme)(`v${version}`)} `;
-  const compactBorderTitle = color("text", userTheme)(" OpenClaude ");
+  const borderTitle = ` ${color("text", userTheme)("Hernanda Agent")} ${color("inactive", userTheme)(`v${version}`)} `;
+  const compactBorderTitle = color("text", userTheme)(" Hernanda Agent ");
   if (layoutMode === "compact") {
     let welcomeMessage = formatWelcomeMessage(username);
     if (stringWidth(welcomeMessage) > columns - 4) {
@@ -365,7 +366,7 @@ export function LogoV2() {
   const t17 = 1;
   let t18;
   if ($[46] !== welcomeMessage_0) {
-    t18 = <Box marginTop={1} flexDirection="column" alignItems="center"><Text bold={true}>OPEN CLAUDE</Text><Text dimColor={true}>open terminal for any LLM</Text><Text color="inactive">•</Text><Text bold={true}>{welcomeMessage_0}</Text></Box>;
+    t18 = <Box marginTop={1} flexDirection="column" alignItems="flex-start"><Text color="#81D4FA">██╗  ██╗   ██████╗    ██████╗    ██╗   ██╗   █████╗    ██╗   ██╗  ██████╗     █████╗</Text><Text color="#81D4FA">██║  ██║   ╚════██╗   ╚════██╗   ╚██╗ ██╔╝  ██╔══██╗   ╚██╗ ██╔╝  ╚══██╔╝    ██╔══██╗</Text><Text color="#4FC3F7">███████║    █████╔╝    █████╔╝    ╚████╔╝   ███████║    ╚████╔╝     ██║      ███████║</Text><Text color="#4FC3F7">██╔══██║    ╚═══██╗   ██╔══██╗     ╚██╔╝    ██╔══██║     ╚██╔╝      ██║      ██╔══██║</Text><Text color="#29B6F6">██║  ██║   ██████╔╝   ██║  ██║      ██║     ██║  ██║      ██║       ██║      ██║  ██║</Text><Text color="#29B6F6">╚═╝  ╚═╝   ╚═════╝    ╚═╝  ╚═╝      ╚═╝     ╚═╝  ╚═╝      ╚═╝       ╚═╝      ╚═╝  ╚═╝</Text><Text color="#81D4FA"> █████╗     ██████╗   ██████╗    ██╗   ██╗  ████████╗</Text><Text color="#81D4FA">██╔══██╗   ██╔════╝   ╚════██╗   ╚██╗ ██╔╝  ╚══██╔══╝</Text><Text color="#4FC3F7">███████║   ██║  ███╗   █████╔╝    ╚████╔╝      ██║</Text><Text color="#4FC3F7">██╔══██║   ██║   ██║   ╚═══██╗     ╚██╔╝       ██║</Text><Text color="#29B6F6">██║  ██║   ╚██████╔╝  ██████╔╝      ██║        ██║</Text><Text color="#29B6F6">╚═╝  ╚═╝    ╚═════╝   ╚═════╝       ╚═╝        ╚═╝</Text><Text dimColor={true}>open terminal for any LLM</Text><Text color="inactive">•</Text><Text bold={true}>{welcomeMessage_0}</Text></Box>;
     $[46] = welcomeMessage_0;
     $[47] = t18;
   } else {

@@ -1,6 +1,11 @@
 /**
  * Color palettes for the startup splash logo.
  * Selected via /logo, persisted in GlobalConfig.logoColor.
+ *
+ * NOTE: The default 'sunset' palette is the primary brand palette.
+ * Edit colors in src/utils/headerBanner.ts (STARTUP_PALETTE) — the
+ * values here are kept in sync as the default selection. To preview
+ * different palette names at runtime, use the /logo command.
  */
 
 export type RGB = readonly [number, number, number]
@@ -21,17 +26,17 @@ export type LogoPalette = {
 export const LOGO_PALETTES = {
   sunset: {
     gradient: [
-      [255, 180, 100],
-      [240, 140, 80],
-      [217, 119, 87],
-      [193, 95, 60],
-      [160, 75, 55],
-      [130, 60, 50],
+      [180, 230, 255],
+      [140, 210, 250],
+      [100, 190, 245],
+      [70, 165, 235],
+      [50, 140, 220],
+      [35, 115, 200],
     ],
-    accent: [240, 148, 100],
-    cream: [220, 195, 170],
-    dim: [120, 100, 82],
-    border: [100, 80, 65],
+    accent: [100, 190, 245],
+    cream: [210, 230, 250],
+    dim: [100, 140, 180],
+    border: [70, 110, 150],
   },
   forest: {
     gradient: [

@@ -446,7 +446,7 @@ function pathsEqualForPermission(a: string, b: string): boolean {
     normalizeCaseForComparison(normalize(b))
 }
 
-export function isValarions ClaudeCommitMessagePath(absolutePath: string): boolean {
+export function isOCCommitMessagePath(absolutePath: string): boolean {
   const expectedPath = join(getOriginalCwd(), '.git', 'OC_COMMIT_MSG')
   const expectedForms = getPathsForPermissionCheck(expectedPath)
   const targetForms = getPathsForPermissionCheck(absolutePath)
@@ -1649,7 +1649,7 @@ export function checkEditableInternalPath(
   if (
     (toolPermissionContext?.mode === 'bypassPermissions' ||
       toolPermissionContext?.mode === 'fullAccess') &&
-    isValarions ClaudeCommitMessagePath(normalizedPath)
+    isOCCommitMessagePath(normalizedPath)
   ) {
     return {
       behavior: 'allow',
